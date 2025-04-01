@@ -1,0 +1,6 @@
+# Activate venv
+cd D:\Projects\Excel-Query-Bot
+.\venv\Scripts\activate
+
+# Install Requirements
+pip install -r requirements.txt
