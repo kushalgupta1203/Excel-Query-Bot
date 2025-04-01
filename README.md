@@ -15,9 +15,9 @@ An AI-powered Excel Query Bot that allows users to upload CSV/XLSX files and ask
 ├── 📂 backend
 │   ├── main.py          # FastAPI server
 │   ├── query_handler.py # Query processing logic
-│   ├── requirements.txt # Backend dependencies
 ├── 📂 frontend
 │   ├── app.py           # Streamlit frontend
+├── requirements.txt     # Dependencies
 ├── .env                 # API key configuration
 ├── README.md            # Project documentation
 ```
