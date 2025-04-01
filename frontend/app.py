@@ -8,13 +8,16 @@ user_query = st.text_input("Enter your query")
 
 if st.button("Submit Query"):
     if uploaded_file and user_query:
-        files = {"file": uploaded_file.getvalue()}
+        files = {"file": (uploaded_file.name, uploaded_file.getvalue(), uploaded_file.type)}
         data = {"user_query": user_query}
         
         response = requests.post("http://127.0.0.1:8000/query/", files=files, data=data)
         
+        st.write("### Full API Response:")
+        st.json(response.json())  # Log full response
+
         if response.status_code == 200:
-            st.write("### Response:")
+            st.write("### Answer:")
             st.write(response.json().get("response", "No response received."))
         else:
-            st.error("Failed to get a response. Please check the backend.")
+            st.error(f"Error {response.status_code}: {response.text}")

@@ -27,8 +27,13 @@ def process_query(file_path, query):
     
     Query: {query}
     """
-    
-    model = genai.GenerativeModel("gemini-pro")
-    response = model.generate_content(prompt)
-    
-    return response.text if response else "I couldn't process that query."
+
+    try:
+        # Use "gemini-1.5-flash" for free-tier users
+        model = genai.GenerativeModel("gemini-1.5-flash")  
+        response = model.generate_content(prompt)
+
+        return response.text if response else "No valid response from Gemini AI."
+
+    except Exception as e:
+        return f"Error: {str(e)}"
